@@ -6,6 +6,6 @@ Youtube to mp3 converter using nodejs with express.js for "back-end" , youtube-d
 Does not run on windows because of text formating.
 
 
-To-do now list: 
-3. Tidy up files for better readability and furher expansion. +-
+To-do now list:
+1. Tidy up files for better readability and furher expansion +-
 2. Add multi user support.
