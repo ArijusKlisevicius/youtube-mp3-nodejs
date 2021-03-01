@@ -1,9 +1,13 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 #downloadBar {
-    background-color: black;
-    border-radius: 13px;
+    background-color: white;
+    border-style: solid;
     /* (height of inner div) / 2 + padding */
     padding: 3px;
-    width: 200px;
+    max-width: 322px;
     margin-bottom: 10px;
 }
 
@@ -19,32 +23,331 @@
     border-radius: 10px;
 }
 
-.lds-dual-ring {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
+
+.progressElements {
+    display: flex;
+    width: 80%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+
+
+.song {
+    border-style: solid;
+    display: flex;
+    margin-bottom: 10px;
+    height: auto;
+}
+
+.songTitle {
+    /* position: relative; */
+    width: 100%;
+    min-height: 30px;
+    font-size: 20px;
+    margin: 10px;
+}
+
+#songs {
+    overflow: auto;
+    height: 64vh;
+}
+
+
+#ytUrl:focus {
+    outline: none;
+}
+
+.playBtn {
+    width: 150px;
+    border-style: none;
+    font-size: 20px;
+    border-left-style: solid;
+    border-left-color: black;
+}
+
+
+
+#footer {
+    border-style: double;
+    text-align: center;
+    align-items: center;
+    background-color: white;
+    border-style:double;
+    border-width: 5px;
+    padding: 10px;
+}
+#progress-elements {
+    max-width: 500px;
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#progress {
+    background-color: grey;
+    width: 400px;
+    height: 20px;
+}
+
+#innerProgress {
+    position: relative;
+    width: 0%;
+    background-color: black;
+    height: 20px;
+}
+
+#player-buttons {
+    margin-top: 10px;
+}
+
+.progress-slider {
+    width: 400px;
+    height: 15px;
+    -webkit-appearance: none;
+    background: grey;
+    outline: none;
+    overflow: hidden;
+    transition: opacity .2s;
+  }
+  .progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    scroll-behavior: smooth;
+    width: 0px;
+    height: 15px;
+    background-color: black;
+    /* border: 4px solid #333; */
+    box-shadow: -205px 0 0 205px black;
+  }
+
+
+#volume-control {
+    -webkit-appearance: none;
+    width: 10%;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: relative;
+    top: 0;
+  }
+  
+  #volume-control:hover {
+    opacity: 1;
+  }
+  
+  #volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10%;
+    height: 5px;
+    background: black;
+    cursor: pointer;
+  }
+  
+  #volume-control::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+
+
+
+
+
+#elapsedTime {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#fullTime {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#kakis2 {
+    border-style:double;
+    border-width: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#form {
+    border-style: solid;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#ytUrl {
+    /* position: relative; */
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    border-style: none;
+    margin: 10px;
+}
+
+#ytUrl:focus {
+    outline: none;
+}
+
+#submitBtn {
+    width: 150px;
+    border-style: none;
+    font-size: 20px;
+    border-left-style: solid;
+    border-left-color: black;
+}
+#submitBtn:focus {
+    background-color: blue;
+}
+
+#player-buttons button {
+    border-style: solid;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+/* .arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid black;
+    
+  }
+#arrow-box {
+    border-style: solid;
+    border-right: none;
+    border-top: none;
     position: absolute;
-    /* display: none; */
+    top: 0;
+    right: 0;
+    padding: 10px;
+} */
+
+
+
+#whole {
+    padding: 10px;
+    border-style: solid;
+    display:none;
+     display: flexbox; 
+     position: relative;
 }
 
-.lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 13px;
-    height: 13px;
-    margin: 0px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    border-color: #fff transparent #fff transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
+#data {
+    margin-left: 10px;
 }
 
-@keyframes lds-dual-ring {
-    0% {
-        transform: rotate(0deg);
-    }
+#whole button {
+    border-style: solid;
+    border-radius: 0;
+    height: 30px;
+    font-weight: bold;
+    border-color: black;
+    border-width: 3px;
+}
 
-    100% {
-        transform: rotate(360deg);
+#whole button:disabled {
+    border-color: grey;
+}
+
+#title {
+    position: relative;
+    /* bottom: 20px; */
+    /* bottom: 20px; */
+}
+
+
+#delete {
+    border: solid black;
+}
+
+#search-bar {
+    width: 60%;
+    border: solid black;
+}
+
+#search-and-delete {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#mute {
+    margin-top: 5px;
+    border-style: solid;
+    font-weight: bold;
+}
+
+#delete-popup {
+    width: 95%;
+    padding: 10px;
+    max-height: 300px;
+    overflow: auto;
+    background-color: white;
+    border: double black 5px;
+    position: absolute;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  box-shadow: 10px 5px 5px grey;
+}
+.delete-popup-buttons {
+    border-bottom: solid black 3px;
+    text-align: center;
+}
+.delete-popup-buttons > button {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.blur {
+  
+    
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media  (min-width:800px) {
+#kakis2 {
+    width: 800px;
+     margin: 0 auto;
+    
+}
+#footer {
+    width: 800px;
+    margin: 0 auto;
+}
+#whole {
+    display: flex;
+}
+#dataBtns {
+    margin-top: 20px;
+}
+#search-and-delete {
+    width: 800px;
+    margin: 0 auto;
+}
+#delete-popup {
+    width: 800px;
+    margin: 0 auto;
+}
+
+}
+
+
+@media (max-width:480px){
+    #songs {
+        height: 50vh;
     }
 }

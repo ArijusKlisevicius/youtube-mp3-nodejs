@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -37,7 +38,7 @@ app.post('/post', (req, res) => {
     ls.stdout.on("data", data => {
         if (data.includes("[ffmpeg] Destination")) {
             var stringData = data.toString();
-            var pathStart = stringData.lastIndexOf('\\') + 1;  
+            var pathStart = stringData.lastIndexOf('/') + 1;  
             var pathEnd = stringData.lastIndexOf('.mp3') + 4;
             filePath = stringData.substring(pathStart, pathEnd);
             console.log(`pathStart: ${pathStart} pathEnd: ${pathEnd} stringData.length: ${stringData.length} filePath: ${filePath}`);
@@ -67,9 +68,58 @@ app.post('/post', (req, res) => {
 });
 
 app.get('/download/', (req, res) => {
+    console.log('downloading!');
+    console.log(__dirname + '/songs/' + req.query.fileAdress);
     res.download(__dirname + '/songs/' + req.query.fileAdress, () => {
         fs.unlink(__dirname + '/songs/' + req.query.fileAdress, () => {
         })
     })
     
+})
+
+app.post('/save', (req,res) => {
+    console.log(__dirname + '/songs/' + req.body.address);
+    fs.rename(__dirname + '/songs/' + req.body.address,
+     __dirname + '/public/savedsongs/' + req.body.address, 
+     () => {
+         console.log("Perstumta!");
+     })
+     res.end();
+})
+
+app.get('/playlist', (req,res) => {
+    const directoryPath = path.join(__dirname, 'public/savedsongs');
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            console.log("Something wrong!: " + err);
+        }
+
+        files.forEach(function (file) {
+            console.log(file);
+        })
+        res.send({'files': files});
+    })
+})
+
+app.get('/play/', (req,res) => {
+    var returnData = {};
+
+    fs.readFile(__dirname + '\\songs\\' + req.body.address, (err, file) => {
+        var base64File = new Buffer(file, 'binary').toString('base64');
+        returnData.fileConent = base64File;
+        res.json(returnData);
+    })
+})
+
+app.post('/delete', (req, res) => {
+    const directoryPath = path.join(__dirname, 'public/savedsongs');
+    for (var i = 0; i < req.body.files.length; i++) {
+        fs.unlink(directoryPath + '/' + req.body.files[i].replace(/\s/g, '_'), (err) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        });
+    }
+    res.send('oke');
 })

@@ -4,28 +4,58 @@
 <head>
     <title>Youtube downloader</title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <script src="/js/jquery.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-   
-    <form action='/post' method="POST" id="form">
-        <label for="ytUrl">URL:</label>
-        <input type="text" name="ytUrl" id="ytUrl">
-        <input type="submit" value="Look" id="submitBtn" disabled>
-    </form>
-    <div id="downloadBar">
-        <div class="lds-dual-ring"></div>
-        <div id="insideBar">    </div>
+    <div id='kakis2'>
+        <form action='/post' method="POST" id="form">
+            <input type="text" name="ytUrl" id="ytUrl">
+            <input type="submit" value="Look it up!" id="submitBtn" disabled>
+        </form>
+        <div id="whole">
+            <div id='ytLookup'></div>
+            <div id='data'>
+                <h2 id='title'></h2>
+                <div id="downloadBar">
+                    <div id="insideBar"> </div>
+                </div>
+                <div id='dataBtns'>
+                    <button id="downloadBtn" disabled>Download</button>
+                    <button id="saveSong" disabled>Save to Playlist!</button> |
+                    <button id="downloadNext" disabled>Download Next</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="songs">
+        </div>
+        <audio id="player" type="audio/mpeg" src=""  ></audio>
     </div>
-    <button id="downloadBtn" disabled>Download</button>
-    <button id="saveSong" disabled>Save to Playlist!</button> |
-    <button id="downloadNext" disabled>Download Next</button>
-    <hr>
+    <div id='search-and-delete'>
+        <button id='delete'>Delete</button>
+        <input id='search-bar' type='text' placeholder="Search for a song" spellcheck="false">
+    </div>
+    <div id='footer'>
+        <div id='player-buttons'>
+            <button id="prev" onclick="prevSong()" disabled> < </button>
+            <button id='play' onclick="playSong(event)" disabled> PLAY </button>
+            <button id="next" onclick="nextSong()" disabled> > </button>
+        </div>
+        <button id='mute' disabled >MUTE</button>
+        <input type="range" id="volume-control" value="100">
+        <div id='progress-elements'>
+            <div id="elapsedTime">00:00</div>
+            <input id='ranger' class='progress-slider' type='range' step='0.01' value='0' min='0' max='100' onchange='rangeSlide(this.value)' >
+            <div id='fullTime'>00:00</div>
+        </div>
 
-    
+        <h2 id='player-title'></h2>
+    </div>
     <script src="/js/index.js"></script>
+    <script src="/js/player.js"></script>
 </body>
 
 </html>
