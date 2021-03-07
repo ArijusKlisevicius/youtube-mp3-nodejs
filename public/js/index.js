@@ -111,14 +111,27 @@ $('#form').submit((e) => {
     $('#songs').css('height', '45vh')
     var checkIfThumbnailExists = document.getElementById('thumbnail');
     if (checkIfThumbnailExists != null) {
-        var yurl = $('#ytUrl').val().substring($('#ytUrl').val().lastIndexOf('?v=') + 3, $('#ytUrl').val().lastIndexOf('&'));
+        var indexOfAmper = $('#ytUrl').val().lastIndexOf('&');
+        if (indexOfAmper < 0) {
+            var yurl = $('#ytUrl').val().substring($('#ytUrl').val().lastIndexOf('?v=') + 3);
+            
+        } else {
+            var yurl = $('#ytUrl').val().substring($('#ytUrl').val().lastIndexOf('?v=') + 3, $('#ytUrl').val().lastIndexOf('&'));
+        }
+        
         checkIfThumbnailExists.setAttribute('src', 'https://www.youtube.com/embed/' + yurl);
     } else {
         var iframe = document.createElement('iframe');
         iframe.setAttribute('id', 'thumbnail');
         iframe.setAttribute('width', 250);
         iframe.setAttribute('height', 150);
-         var yurl = $('#ytUrl').val().substring($('#ytUrl').val().lastIndexOf('?v=') + 3, $('#ytUrl').val().lastIndexOf('&'));
+        var indexOfAmper = $('#ytUrl').val().lastIndexOf('&');
+        if (indexOfAmper < 0) {
+            
+            var yurl = $('#ytUrl').val().substring($('#ytUrl').val().lastIndexOf('?v=') + 3);
+        } else {
+            var yurl = $('#ytUrl').val().substring($('#ytUrl').val().lastIndexOf('?v=') + 3, $('#ytUrl').val().lastIndexOf('&'));
+        }
         iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yurl);
         $('#ytLookup').append(iframe);
     }
