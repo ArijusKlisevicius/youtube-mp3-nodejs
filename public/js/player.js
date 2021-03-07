@@ -170,7 +170,7 @@ const playSong = function (e) {
 aud.addEventListener('loadeddata', () => {
     document.getElementById('ranger').value = 0;
     var playerTitle = songs[currentId];
-    document.getElementById('player-title').textContent = playerTitle.substring(0, playerTitle.length - 4);
+    document.getElementById('player-title').textContent = playerTitle.substring(0, playerTitle.length - 4).replace(/_/g, ' ');
     var date = new Date(0);
     date.setSeconds(Math.floor(aud.duration));
     if (Math.floor(aud.currentTime) < 3600) {
@@ -182,7 +182,7 @@ aud.addEventListener('loadeddata', () => {
     $('#fullTime').text(timeString);
 })
 
-$('#volume-control').on('change', (e) => {
+$('#volume-control').on('input', (e) => {
     console.log(aud.volume);
     console.log('changingam');
     console.log(e.currentTarget.value);

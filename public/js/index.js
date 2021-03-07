@@ -27,7 +27,7 @@ $('#saveSong').click(() => {
         .done(() => {
             console.log("Done");
         })
-    songs.push(fileAddress);
+    songs.push(fileAddress.replace(/ /g,"_"));
     var div = document.createElement('div');
     div.setAttribute('class', 'song');
     div.style.borderStyle = 'solid';
