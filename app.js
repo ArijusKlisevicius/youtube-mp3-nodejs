@@ -80,7 +80,7 @@ app.get('/download/', (req, res) => {
 app.post('/save', (req,res) => {
     console.log(__dirname + '/songs/' + req.body.address);
     fs.rename(__dirname + '/songs/' + req.body.address,
-     __dirname + '/public/savedsongs/' + req.body.address, 
+     __dirname + '/public/savedsongs/' + req.body.address.replace(/ /g,"_"), 
      () => {
          console.log("Perstumta!");
      })
