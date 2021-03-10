@@ -118,6 +118,15 @@ body {
     /* border: 4px solid #333; */
     box-shadow: -205px 0 0 205px black;
   }
+  .progress-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    scroll-behavior: smooth;
+    width: 0px;
+    height: 15px;
+    background-color: black;
+    /* border: 4px solid #333; */
+    box-shadow: -205px 0 0 205px black;
+  }
 
 
 #volume-control {
@@ -144,13 +153,17 @@ body {
     height: 5px;
     background: black;
     cursor: pointer;
+    border: none;
   }
   
   #volume-control::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10%;
+    height: 100%;
+    background: black;
     cursor: pointer;
+    border: none;
   }
 
 

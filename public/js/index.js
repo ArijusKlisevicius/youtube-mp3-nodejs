@@ -2,7 +2,7 @@ $('#whole').hide();
 var fileAddress;
 
 const checkUrl = (url) => {
-    var re = /^http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/;
+    var re = /^http(?:s?):\/\/(?:www\.)?(?:m\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/;
     return re.test(url);
 }
 $('#downloadNext').click(() => {
