@@ -1,4 +1,4 @@
-$('#whole').hide();
+$('#song-info-and-download-buttons').hide();
 var fileAddress;
 
 const checkUrl = (url) => {
@@ -107,7 +107,7 @@ $('#ytUrl').keyup(() => {
 $('#form').submit((e) => {
     e.preventDefault();
     $('#submitBtn').prop('disabled', true);
-    $('#whole').slideDown();
+    $('#song-info-and-download-buttons').slideDown();
     $('#songs').css('height', '45vh')
     var checkIfThumbnailExists = document.getElementById('thumbnail');
     if (checkIfThumbnailExists != null) {

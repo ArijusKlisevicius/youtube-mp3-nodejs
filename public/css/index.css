@@ -178,7 +178,7 @@ body {
     margin-left: 10px;
     margin-right: 10px;
 }
-#kakis2 {
+#main-screen {
     border-style:double;
     border-width: 5px;
     padding: 10px;
@@ -241,7 +241,7 @@ body {
 
 
 
-#whole {
+#song-info-and-download-buttons {
     padding: 10px;
     border-style: solid;
     display:none;
@@ -253,7 +253,7 @@ body {
     margin-left: 10px;
 }
 
-#whole button {
+#song-info-and-download-buttons button {
     border-style: solid;
     border-radius: 0;
     height: 30px;
@@ -262,7 +262,7 @@ body {
     border-width: 3px;
 }
 
-#whole button:disabled {
+#song-info-and-download-buttons button:disabled {
     border-color: grey;
 }
 
@@ -332,7 +332,7 @@ body {
 }
 
 @media  (min-width:800px) {
-#kakis2 {
+#main-screen {
     width: 800px;
      margin: 0 auto;
     
@@ -341,7 +341,7 @@ body {
     width: 800px;
     margin: 0 auto;
 }
-#whole {
+#song-info-and-download-buttons {
     display: flex;
 }
 #dataBtns {
