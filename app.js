@@ -93,21 +93,24 @@ app.get('/playlist', (req,res) => {
         if (err) {
             console.log("Something wrong!: " + err);
         }
-
-        files.forEach(function (file) {
-            console.log(file);
-        })
+        
         res.send({'files': files});
     })
 })
 
-app.get('/play/', (req,res) => {
-    var returnData = {};
-
-    fs.readFile(__dirname + '\\songs\\' + req.body.address, (err, file) => {
-        var base64File = new Buffer(file, 'binary').toString('base64');
-        returnData.fileConent = base64File;
-        res.json(returnData);
+app.get('/onlogoff', (req,res) => {
+    const directoryPath = path.join(__dirname, 'songs');
+    fs.readdir(directoryPath ,(err, files) => {
+        if (err) {
+            console.log(err);
+        }
+        files.forEach(function(file) {
+            fs.unlink(path.join(directoryPath, file), err => {
+                if (err) {
+                    console.log(err);
+                }
+            })
+        })
     })
 })
 

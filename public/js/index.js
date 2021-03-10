@@ -192,3 +192,12 @@ $('#form').submit((e) => {
         });
 
 });
+
+$(window).on('unload', () => {
+    alert("Gucci");
+    $.ajax({
+        type: "GET",
+        url: '/onlogoff',
+        async: false,
+    })
+})
