@@ -24,9 +24,7 @@ $('#saveSong').click(() => {
         type: 'POST',
         dataType: 'text',
     })
-        .done(() => {
-            console.log("Done");
-        })
+        .done(() => {})
     songs.push(fileAddress.replace(/ /g,"_"));
     var div = document.createElement('div');
     div.setAttribute('class', 'song');
@@ -43,9 +41,7 @@ $('#saveSong').click(() => {
     document.getElementById('songs').prepend(div);
     btn.addEventListener('click', (e) => {
         if (e.currentTarget.getAttribute('id') == currentId) {
-            console.log(e.currentTarget.textContent);
             if (e.currentTarget.textContent == 'Play') {
-              
                 document.getElementById('player').play();
             } else {
                 document.getElementById('player').pause();        
@@ -53,7 +49,6 @@ $('#saveSong').click(() => {
         } else {      
             $('#' + currentId).css('background-color', '');
             $('#' + currentId).text('Play');
-            console.log(e.currentTarget.getAttribute('id'));
             currentId = e.currentTarget.getAttribute('id');
             document.getElementById('player').setAttribute('src', '/savedsongs/' + songs[currentId]);
             document.getElementById('player').play();    
@@ -71,13 +66,11 @@ $('#downloadBtn').click((e) => {
     var url = new URL('/download/', window.location);
     var params = [['fileAdress', fileAddress]];
     url.search = new URLSearchParams(params).toString();
-    console.log(fileAddress);
     fetch(url)
         .then(resp => {
             return resp.blob();
         })
         .then(blob => {
-            console.log('AAAA');
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.style.display = 'none';
@@ -135,8 +128,6 @@ $('#form').submit((e) => {
         iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yurl);
         $('#ytLookup').append(iframe);
     }
-
-    console.log(yurl);
     var url = 'https://www.youtube.com/watch?v=' + yurl;
     $.getJSON('https://noembed.com/embed',
             { format: 'json', url: url }, function (data) {
@@ -170,7 +161,6 @@ $('#form').submit((e) => {
                         $('#insideBar').css("width", m[0]);
                     }
                 } while (m);
-                console.log(progressResponse);
             }
         }
     })
@@ -179,7 +169,6 @@ $('#form').submit((e) => {
             $('#saveSong').prop('disabled', false);
             $('#downloadBar>div').css("background-color", 'green');
             fileAddress = data.substring(data.lastIndexOf('%') + 1);
-            console.log(fileAddress);
         })
         .fail((xhr, status, errorThrown) => {
             alert("Sorry, there was a problem!");

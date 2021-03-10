@@ -24,7 +24,6 @@ $.get('/playlist').done((data) => {
     }
     $('.playBtn').click((e) => {
         if (e.currentTarget.getAttribute('id') == currentId) {
-            console.log(e.currentTarget.textContent);
             if (e.currentTarget.textContent == 'Play') {
 
                 document.getElementById('player').play();
@@ -34,7 +33,6 @@ $.get('/playlist').done((data) => {
         } else {
             $('#' + currentId).css('background-color', '');
             $('#' + currentId).text('Play');
-            console.log(e.currentTarget.getAttribute('id'));
             currentId = e.currentTarget.getAttribute('id');
             document.getElementById('player').setAttribute('src', '/savedsongs/' + songs[currentId].split(' ').join('_'));
             document.getElementById('player').play();
@@ -57,9 +55,6 @@ aud.addEventListener('pause', () => {
     $('#' + currentId).text('Play');
 })
 
-aud.addEventListener('abort', () => {
-    console.log(currentId);
-})
 
 aud.addEventListener('timeupdate', updateTime);
 function rangeSlide(value) {
@@ -97,10 +92,7 @@ const nextSong = function () {
     currentId = parseInt(currentId);
     $('#' + currentId).css('background-color', '');
     $('#' + currentId).text('Play');
-    console.log((currentId + 1) + ' ' + songs.length);
-
     if (currentId + 1 > songs.length - 1) {
-        console.log(currentId + ' ' + songs.length);
         currentId = -1;
     }
     currentId += 1;
@@ -111,7 +103,6 @@ const nextSong = function () {
             currentId += 1;
         }
     }
-
     document.getElementById('player').setAttribute('src', '/savedsongs/' + songs[currentId].split(' ').join('_'));
     if ($('#play').text() == 'PLAY') {
         $('#play').text('PAUSE');
@@ -119,12 +110,10 @@ const nextSong = function () {
     document.getElementById('player').play();
     $('#' + currentId).css('background-color', '#abffb0');
     $('#' + currentId).text('Pause');
-    console.log(currentId);
 }
 
 const prevSong = function () {
     currentId = parseInt(currentId);
-    console.log("kiek praejo: " + Math.floor(aud.currentTime));
     if (Math.floor(aud.currentTime) < 3) {
         $('#' + currentId).css('background-color', '');
         $('#' + currentId).text('Play');
@@ -135,15 +124,11 @@ const prevSong = function () {
         currentId -= 1;
         while (deletedIndexes.includes((currentId).toString())) {
             if (currentId == 0) {
-                console.log('chebra mes cia gi');
                 currentId = songs.length - 1;
             } else {
                 currentId -= 1;
             }
         }
-
-
-
         document.getElementById('player').setAttribute('src', '/savedsongs/' + songs[currentId].split(' ').join('_'));
         if ($('#play').text() == 'PLAY') {
             $('#play').text('PAUSE');
@@ -154,18 +139,15 @@ const prevSong = function () {
     } else {
         aud.currentTime = 0;
     }
-    console.log(currentId);
 }
 
 const playSong = function (e) {
-    console.log(e.currentTarget.textContent);
     if (e.currentTarget.textContent == 'PLAY') {
         aud.play();
     } else {
         aud.pause();
     }
 }
-
 
 aud.addEventListener('loadeddata', () => {
     document.getElementById('ranger').value = 0;
@@ -178,20 +160,15 @@ aud.addEventListener('loadeddata', () => {
     } else {
         var timeString = date.toISOString().substr(11, 8);
     }
-
     $('#fullTime').text(timeString);
 })
 
 $('#volume-control').on('input', (e) => {
-    console.log(aud.volume);
-    console.log('changingam');
-    console.log(e.currentTarget.value);
     aud.volume = e.currentTarget.value / 100;
 })
 
 var prevVolume;
-
-$('#mute').click((e) => {
+$('#mute').on('click', (e) => {
     if ($('#mute').text() == 'MUTE') {
         prevVolume = aud.volume;
         aud.volume = e.currentTarget.value / 100;
@@ -210,8 +187,6 @@ $('#search-bar').on('keyup', () => {
     for (var i = 0; i < songs.length; i++) {
         if (songs[i].toLowerCase().includes(val.toLowerCase())) {
             $('#' + i).parent().show();
-
-
         } else {
             $('#' + i).parent().hide();
         }
@@ -226,13 +201,11 @@ $('#delete').on('click', () => {
         for (var i = 0; i < songsToDeleteIndexes.length; i++) {
             songsToDelete.push(songs[songsToDeleteIndexes[i]]);
         }
-        console.log('trinam lauk pasirinktus');
         deleteToggle = false;
         $('body').append('<div class="blur"></div>');
         var deleteWindow = document.createElement('div');
         $('.blur').append('<div id="delete-popup"></div>');
         $('#delete-popup').append('<div class="delete-popup-buttons"></div>')
-
         $('.delete-popup-buttons').append('<button class="delete-popup-ok"> Yes </button>');
         $('.delete-popup-buttons').append('<button class="delete-popup-no"> No </button>');
         $('#delete-popup').append('<h1 class="delete-popup-quetion">Do you want to delete these songs?</h1>')
@@ -241,20 +214,15 @@ $('#delete').on('click', () => {
         }
         $('.delete-popup-ok').on('click', () => {
             deletedIndexes.push(...songsToDeleteIndexes);
-            console.log('Deleted indexed 299l: ' + deletedIndexes);
             var tableFields = document.getElementById('songs');
             var children = tableFields.children;
             for (var i = 0; i < children.length; i++) {
                 var tableChild = children[i];
-                // Do stuff
                 var idToSchek = tableChild.children[1].getAttribute('id');
-
                 if (songsToDeleteIndexes.includes(idToSchek)) {
-                    console.log('id kurio trinam: ' + tableChild.children[1].getAttribute('id'));
                     tableChild.remove();
                     i--;
                 }
-
             }
             $.ajax({
                 url: '/delete',
@@ -262,14 +230,12 @@ $('#delete').on('click', () => {
                 type: 'POST',
                 dataType: 'text',
             })
-                .done(() => {
-                    console.log("Done");
+                .done(() => {        
                 })
             $('.blur').remove();
             songsToDeleteIndexes = [];
             songsToDelete = [];
             $('.song').off();
-            console.log(songs);
         })
         $('.delete-popup-no').on('click', () => {
             $('.blur').remove();
@@ -281,7 +247,6 @@ $('#delete').on('click', () => {
         });
         $('#delete').text('Delete');
     } else {
-        console.log('renkames ka trint');
         $('#delete').text('Delete selected');
         $('.song').on('click', function (e) {
             if ($(this).attr('data-click-state') == 1) {
@@ -295,9 +260,7 @@ $('#delete').on('click', () => {
                 $(this).css('background-color', '#faa7ae')
                 songsToDeleteIndexes.push($(e.currentTarget).children('button').attr('id'));
             }
-            console.log($(e.currentTarget).children('button').attr('id'));
         });
         deleteToggle = true;
     }
-
 })

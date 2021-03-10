@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Youtube downloader</title>
     <link rel="stylesheet" href="/css/index.css">
@@ -8,7 +7,6 @@
     <script src="/js/jquery.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
     <div id='main-screen'>
         <form action='/post' method="POST" id="form">
@@ -51,11 +49,9 @@
             <input id='ranger' class='progress-slider' type='range' step='0.01' value='0' min='0' max='100' onchange='rangeSlide(this.value)' >
             <div id='fullTime'>00:00</div>
         </div>
-
         <h2 id='player-title'></h2>
     </div>
     <script src="/js/index.js"></script>
     <script src="/js/player.js"></script>
 </body>
-
 </html>

@@ -1,11 +1,10 @@
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #downloadBar {
     background-color: white;
     border-style: solid;
-    /* (height of inner div) / 2 + padding */
     padding: 3px;
     max-width: 322px;
     margin-bottom: 10px;
@@ -15,22 +14,13 @@ body {
     border-color: black;
     margin-bottom: 10px;
 }
+
 #insideBar {
     background-color: orange;
     width: 0%;
-    /* Adjust with JavaScript */
     height: 20px;
     border-radius: 10px;
 }
-
-
-.progressElements {
-    display: flex;
-    width: 80%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
-}
-
 
 .song {
     border-style: solid;
@@ -40,7 +30,6 @@ body {
 }
 
 .songTitle {
-    /* position: relative; */
     width: 100%;
     min-height: 30px;
     font-size: 20px;
@@ -51,7 +40,6 @@ body {
     overflow: auto;
     height: 64vh;
 }
-
 
 #ytUrl:focus {
     outline: none;
@@ -65,35 +53,21 @@ body {
     border-left-color: black;
 }
 
-
-
 #footer {
     border-style: double;
     text-align: center;
     align-items: center;
     background-color: white;
-    border-style:double;
+    border-style: double;
     border-width: 5px;
     padding: 10px;
 }
+
 #progress-elements {
     max-width: 500px;
     display: flex;
     margin: auto;
     margin-top: 10px;
-}
-
-#progress {
-    background-color: grey;
-    width: 400px;
-    height: 20px;
-}
-
-#innerProgress {
-    position: relative;
-    width: 0%;
-    background-color: black;
-    height: 20px;
 }
 
 #player-buttons {
@@ -108,26 +82,25 @@ body {
     outline: none;
     overflow: hidden;
     transition: opacity .2s;
-  }
-  .progress-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    scroll-behavior: smooth;
-    width: 0px;
-    height: 15px;
-    background-color: black;
-    /* border: 4px solid #333; */
-    box-shadow: -205px 0 0 205px black;
-  }
-  .progress-slider::-moz-range-thumb {
-    -webkit-appearance: none;
-    scroll-behavior: smooth;
-    width: 0px;
-    height: 15px;
-    background-color: black;
-    /* border: 4px solid #333; */
-    box-shadow: -205px 0 0 205px black;
-  }
+}
 
+.progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    scroll-behavior: smooth;
+    width: 0px;
+    height: 15px;
+    background-color: black;
+    box-shadow: -205px 0 0 205px black;
+}
+
+.progress-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    scroll-behavior: smooth;
+    width: 0px;
+    height: 15px;
+    background-color: black;
+    box-shadow: -205px 0 0 205px black;
+}
 
 #volume-control {
     -webkit-appearance: none;
@@ -140,13 +113,13 @@ body {
     transition: opacity .2s;
     position: relative;
     top: 0;
-  }
-  
-  #volume-control:hover {
+}
+
+#volume-control:hover {
     opacity: 1;
-  }
-  
-  #volume-control::-webkit-slider-thumb {
+}
+
+#volume-control::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 10%;
@@ -154,9 +127,9 @@ body {
     background: black;
     cursor: pointer;
     border: none;
-  }
-  
-  #volume-control::-moz-range-thumb {
+}
+
+#volume-control::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 10%;
@@ -164,26 +137,25 @@ body {
     background: black;
     cursor: pointer;
     border: none;
-  }
-
-
-
-
+}
 
 #elapsedTime {
     margin-right: 10px;
     margin-left: 10px;
 }
+
 #fullTime {
     margin-left: 10px;
     margin-right: 10px;
 }
+
 #main-screen {
-    border-style:double;
+    border-style: double;
     border-width: 5px;
     padding: 10px;
     margin-bottom: 10px;
 }
+
 #form {
     border-style: solid;
     display: flex;
@@ -191,7 +163,6 @@ body {
 }
 
 #ytUrl {
-    /* position: relative; */
     width: 100%;
     height: 30px;
     font-size: 20px;
@@ -210,6 +181,7 @@ body {
     border-left-style: solid;
     border-left-color: black;
 }
+
 #submitBtn:focus {
     background-color: blue;
 }
@@ -220,33 +192,12 @@ body {
     font-size: 15px;
 }
 
-
-/* .arrow-up {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 20px solid black;
-    
-  }
-#arrow-box {
-    border-style: solid;
-    border-right: none;
-    border-top: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-} */
-
-
-
 #song-info-and-download-buttons {
     padding: 10px;
     border-style: solid;
-    display:none;
-     display: flexbox; 
-     position: relative;
+    display: none;
+    display: flexbox;
+    position: relative;
 }
 
 #data {
@@ -268,10 +219,7 @@ body {
 
 #title {
     position: relative;
-    /* bottom: 20px; */
-    /* bottom: 20px; */
 }
-
 
 #delete {
     border: solid black;
@@ -301,17 +249,19 @@ body {
     background-color: white;
     border: double black 5px;
     position: absolute;
-  left: 50%;
-  top: 40%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  box-shadow: 10px 5px 5px grey;
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 5px 5px grey;
 }
+
 .delete-popup-buttons {
     border-bottom: solid black 3px;
     text-align: center;
 }
-.delete-popup-buttons > button {
+
+.delete-popup-buttons>button {
     border-style: solid;
     border-width: 3px;
     border-color: black;
@@ -319,47 +269,43 @@ body {
     margin-left: 5px;
     margin-right: 5px;
 }
+
 .blur {
-  
-    
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-@media  (min-width:800px) {
-#main-screen {
-    width: 800px;
-     margin: 0 auto;
-    
-}
-#footer {
-    width: 800px;
-    margin: 0 auto;
-}
-#song-info-and-download-buttons {
-    display: flex;
-}
-#dataBtns {
-    margin-top: 20px;
-}
-#search-and-delete {
-    width: 800px;
-    margin: 0 auto;
-}
-#delete-popup {
-    width: 800px;
-    margin: 0 auto;
-}
-
+@media (min-width:800px) {
+    #main-screen {
+        width: 800px;
+        margin: 0 auto;
+    }
+    #footer {
+        width: 800px;
+        margin: 0 auto;
+    }
+    #song-info-and-download-buttons {
+        display: flex;
+    }
+    #dataBtns {
+        margin-top: 20px;
+    }
+    #search-and-delete {
+        width: 800px;
+        margin: 0 auto;
+    }
+    #delete-popup {
+        width: 800px;
+        margin: 0 auto;
+    }
 }
 
-
-@media (max-width:480px){
+@media (max-width:480px) {
     #songs {
         height: 50vh;
     }
